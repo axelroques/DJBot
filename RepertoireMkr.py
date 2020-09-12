@@ -11,11 +11,9 @@ the Spotify API based on their names.
 Requires a Spotify developer account and a folder with .mp3 files.
 """
 
-# Spotify client id and secret
-cid = ''
-secret = ''
+cid = 'b956f9132a26407483d9118f0d5867ab'
+secret = 'f41241d20e974f0db68d4bb5b685b42d'
 
-# Connection to Spotify
 try:
 	client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 	sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -67,8 +65,7 @@ def clean_name(file):
 
 if __name__ == "__main__":
 
-	# Path to music folder
-	path = ''
+	path = 'C:/Users/roque/Desktop/Music/BDO/Ons'
 
 	songs_artist = []
 	songs_name = []
