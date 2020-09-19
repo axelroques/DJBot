@@ -1,4 +1,4 @@
-from spotipy.oauth2 import SpotifyClientCredentials
+import SpotifyConnect
 import pandas as pd
 import spotipy
 import math
@@ -6,21 +6,10 @@ import os
 
 """
 Makes a repertoire of songs based on an existing music folder. 
-The repertoire consists in the key and bpm of songs that were able to be identified with 
+The repertoire consists of the key and bpm of songs that were able to be identified with 
 the Spotify API based on their names.
 Requires a Spotify developer account and a folder with .mp3 files.
 """
-
-cid = 'b956f9132a26407483d9118f0d5867ab'
-secret = 'f41241d20e974f0db68d4bb5b685b42d'
-
-try:
-	client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
-	sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-	print('- Connected to Spotify')
-except:
-	print("- Can't connect to Spotify")
-	input()
 
 key_dict = {
     0:'C',
@@ -41,6 +30,7 @@ mode_dict = {
     0:'m',
     1:''
     }
+
 
 def clean_name(file):
     # File name cleaning
@@ -65,7 +55,9 @@ def clean_name(file):
 
 if __name__ == "__main__":
 
-	path = 'C:/Users/roque/Desktop/Music/BDO/Ons'
+	sp = SpotifyConnect.connect()
+	
+	path = ''
 
 	songs_artist = []
 	songs_name = []
